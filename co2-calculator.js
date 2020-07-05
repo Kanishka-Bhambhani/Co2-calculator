@@ -39,7 +39,7 @@ function calculateCo2Emission(transportationMethod,distance,unitOfDistance) {
     if(co2EmissionRates.get(transportationMethod) != undefined && validDistance === true && validUnitOfDistance === true)
     	return co2EmissionRates.get(transportationMethod) * getDistanceInKiloMeter(distance,unitOfDistance);
     else 
-	console.log("Data entered is incorrect");
+	return undefined;
 }
 
 function printCo2Emission(emission,unitOfEmission) {
@@ -60,7 +60,7 @@ function printCo2Emission(emission,unitOfEmission) {
     }
     else
     {
-	console.log("Unit Of Emission is incorrect");
+	console.log("Data entered is incorrect");
     }
 }
 
@@ -69,26 +69,42 @@ printCo2Emission(  co2Emission , argv.output );
 
 function validateDistance(distance)
 {
-  if (isNaN(distance) || distance < 0)  {
-    return false
+
+  if (isNaN(distance) || distance < 0 || distance === 'undefined')  {
+    return false;
   }
-  return true
+  return true;
+  
 }
 
 function validateUnitOfDistance(unitOfDistance)
 {
+  if(unitOfDistance != undefined)
+ {
   if (unitOfDistance == 'km' || unitOfDistance == 'm')  {
-    return true
+    return true;
   }
-  return false
+  return false;
+ }
+ else
+ {
+  return true;
+ }
 }
 
 function validateOutput(output)
 {
+  if(output != undefined)
+ {
   if (output == 'kg' || output == 'g')  {
-    return true
+    return true;
   }
-  return false
+  return false;
+ }
+ else
+ {
+   return true;
+ }
 }
 
 module.exports.calculateCo2Emission = calculateCo2Emission;
