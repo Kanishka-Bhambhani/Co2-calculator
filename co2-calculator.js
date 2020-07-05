@@ -57,10 +57,12 @@ function printCo2Emission(emission,unitOfEmission) {
     }
 
     console.log(`Your trip caused ${emission}${unitOfEmission} of CO2-equivalent.`);
+    return emission+unitOfEmission;
     }
     else
     {
 	console.log("Data entered is incorrect");
+        return "Incorrect Data"
     }
 }
 
@@ -112,3 +114,4 @@ module.exports.printCo2Emission = printCo2Emission;
 module.exports.validateDistance = validateDistance;
 module.exports.validateUnitOfDistance = validateUnitOfDistance;
 module.exports.validateOutput = validateOutput;
+module.exports.printCo2Emission = printCo2Emission;
